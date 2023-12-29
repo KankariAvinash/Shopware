@@ -2,6 +2,7 @@
 
 namespace Heptastore;
 
+use Doctrine\DBAL\Connection;
 use Shopware\Core\Framework\Plugin;
 use Shopware\Core\Framework\Plugin\Context\ActivateContext;
 use Shopware\Core\Framework\Plugin\Context\DeactivateContext;
@@ -11,6 +12,7 @@ use Shopware\Core\Framework\Plugin\Context\UpdateContext;
 
 class Heptastore extends Plugin
 {
+
     public function install(InstallContext $installContext): void
     {
         // Do stuff such as creating a new payment method
@@ -19,7 +21,6 @@ class Heptastore extends Plugin
     public function uninstall(UninstallContext $uninstallContext): void
     {
         parent::uninstall($uninstallContext);
-
         if ($uninstallContext->keepUserData()) {
             return;
         }
