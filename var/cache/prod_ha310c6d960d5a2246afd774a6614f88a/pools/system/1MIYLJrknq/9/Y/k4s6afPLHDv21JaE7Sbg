@@ -1,0 +1,3 @@
+<?php //Shopware%255CCore%255CSystem%255CSalesChannel%255CContext%255CCleanup%255CCleanupSalesChannelContextTask%2523getTaskName
+
+return [PHP_INT_MAX, []];

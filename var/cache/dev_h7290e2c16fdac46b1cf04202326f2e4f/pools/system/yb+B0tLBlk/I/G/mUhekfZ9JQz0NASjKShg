@@ -1,0 +1,3 @@
+<?php //Shopware%255CAdministration%255CController%255CAdminSearchController%2523buildSearchEntities
+
+return [PHP_INT_MAX, []];

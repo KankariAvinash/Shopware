@@ -1,0 +1,3 @@
+<?php //%5BC%5DShopware%255CCore%255CFramework%255CApi%255CController%255CCacheController%2523clearCacheAndScheduleWarmUp
+
+return [PHP_INT_MAX, 1703872363];

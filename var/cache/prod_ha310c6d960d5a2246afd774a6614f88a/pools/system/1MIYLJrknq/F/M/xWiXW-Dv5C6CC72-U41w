@@ -1,0 +1,3 @@
+<?php //TestPlugin%255CStorefront%255CController%255CExampleController%2523showExample
+
+return [PHP_INT_MAX, []];

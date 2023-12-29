@@ -1,0 +1,17 @@
+<?php //Shopware_Core_System_UsageData_EntitySync_CollectEntityDataMessage
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (\Symfony\Component\VarExporter\Internal\Registry::$prototypes['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'Shopware\\Core\\System\\UsageData\\EntitySync\\CollectEntityDataMessage',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

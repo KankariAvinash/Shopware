@@ -1,0 +1,35 @@
+<?php //Shopware_Core_Framework_Api_Context_ContextSource
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\ClassDiscriminatorMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassDiscriminatorMapping')),
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'Shopware\\Core\\Framework\\Api\\Context\\ContextSource',
+            ],
+            'classDiscriminatorMapping' => [
+                $o[1],
+            ],
+        ],
+        'Symfony\\Component\\Serializer\\Mapping\\ClassDiscriminatorMapping' => [
+            'typeProperty' => [
+                1 => 'type',
+            ],
+            'typesMapping' => [
+                1 => [
+                    'system' => 'Shopware\\Core\\Framework\\Api\\Context\\SystemSource',
+                    'sales-channel' => 'Shopware\\Core\\Framework\\Api\\Context\\SalesChannelApiSource',
+                    'admin-api' => 'Shopware\\Core\\Framework\\Api\\Context\\AdminApiSource',
+                    'shop-api' => 'Shopware\\Core\\Framework\\Api\\Context\\ShopApiSource',
+                    'admin-sales-channel-api' => 'Shopware\\Core\\Framework\\Api\\Context\\AdminSalesChannelApiSource',
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

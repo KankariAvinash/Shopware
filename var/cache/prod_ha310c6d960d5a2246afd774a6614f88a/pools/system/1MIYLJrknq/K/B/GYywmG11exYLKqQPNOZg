@@ -1,0 +1,3 @@
+<?php //Shopware%255CCore%255CContent%255CProduct%255CCleanup%255CCleanupProductKeywordDictionaryTask%2523getDefaultInterval
+
+return [PHP_INT_MAX, []];

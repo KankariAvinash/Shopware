@@ -1,0 +1,36 @@
+<?php //Shopware_Core_Framework_Struct_Struct
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'Shopware\\Core\\Framework\\Struct\\Struct',
+                'extensions',
+                'apiAlias',
+                'extension',
+                'extensionOfType',
+                'vars',
+            ],
+            'attributesMetadata' => [
+                [
+                    'extensions' => $o[1],
+                    'apiAlias' => $o[2],
+                    'extension' => $o[3],
+                    'extensionOfType' => $o[4],
+                    'vars' => $o[5],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

@@ -1,0 +1,3 @@
+<?php //Shopware%255CAdministration%255CController%255CNotificationController%2523fetchNotification
+
+return [PHP_INT_MAX, []];

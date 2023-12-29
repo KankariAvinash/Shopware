@@ -1,0 +1,3 @@
+<?php //Shopware%255CElasticsearch%255CAdmin%255CAdminSearchController%2523elastic
+
+return [PHP_INT_MAX, []];

@@ -1,0 +1,3 @@
+<?php //Shopware%255CCore%255CCheckout%255CDocument%255CController%255CDocumentController%2523createResponse
+
+return [PHP_INT_MAX, []];

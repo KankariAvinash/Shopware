@@ -1,0 +1,36 @@
+<?php //Shopware_Core_Content_Sitemap_ScheduledTask_SitemapMessage
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'Shopware\\Core\\Content\\Sitemap\\ScheduledTask\\SitemapMessage',
+                'lastSalesChannelId',
+                'lastLanguageId',
+                'lastProvider',
+                'nextOffset',
+                'finished',
+            ],
+            'attributesMetadata' => [
+                [
+                    'lastSalesChannelId' => $o[1],
+                    'lastLanguageId' => $o[2],
+                    'lastProvider' => $o[3],
+                    'nextOffset' => $o[4],
+                    'finished' => $o[5],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];

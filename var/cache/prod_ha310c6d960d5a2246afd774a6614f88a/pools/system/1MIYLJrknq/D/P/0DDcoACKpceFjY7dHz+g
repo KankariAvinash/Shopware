@@ -1,0 +1,3 @@
+<?php //Symfony%255CComponent%255CMessenger%255CStamp%255CBusNameStamp%2523getBusName
+
+return [PHP_INT_MAX, []];

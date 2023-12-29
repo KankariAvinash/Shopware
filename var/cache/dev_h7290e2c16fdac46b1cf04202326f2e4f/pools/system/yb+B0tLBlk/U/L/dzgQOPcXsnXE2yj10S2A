@@ -1,0 +1,3 @@
+<?php //%5BC%5DShopware%255CCore%255CFramework%255CMessageQueue%255CApi%255CScheduledTaskController%2523getMinRunInterval
+
+return [PHP_INT_MAX, 1703872363];

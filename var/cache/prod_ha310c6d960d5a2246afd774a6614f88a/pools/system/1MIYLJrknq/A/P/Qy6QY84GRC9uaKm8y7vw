@@ -1,0 +1,3 @@
+<?php //Shopware%255CCore%255CContent%255CProductStream%255CScheduledTask%255CUpdateProductStreamMappingTask%2523getTaskName
+
+return [PHP_INT_MAX, []];

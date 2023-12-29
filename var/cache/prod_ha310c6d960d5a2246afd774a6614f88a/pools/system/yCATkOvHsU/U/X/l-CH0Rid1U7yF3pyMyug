@@ -1,0 +1,45 @@
+<?php //Shopware_Core_Framework_DataAbstractionLayer_Pricing_CashRoundingConfig
+
+return [PHP_INT_MAX, static function () { return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'Shopware\\Core\\Framework\\DataAbstractionLayer\\Pricing\\CashRoundingConfig',
+                'decimals',
+                'interval',
+                'roundForNet',
+                'extensions',
+                'apiAlias',
+                'extension',
+                'extensionOfType',
+                'vars',
+            ],
+            'attributesMetadata' => [
+                [
+                    'decimals' => $o[1],
+                    'interval' => $o[2],
+                    'roundForNet' => $o[3],
+                    'extensions' => $o[4],
+                    'apiAlias' => $o[5],
+                    'extension' => $o[6],
+                    'extensionOfType' => $o[7],
+                    'vars' => $o[8],
+                ],
+            ],
+        ],
+    ],
+    $o[0],
+    []
+); }];
