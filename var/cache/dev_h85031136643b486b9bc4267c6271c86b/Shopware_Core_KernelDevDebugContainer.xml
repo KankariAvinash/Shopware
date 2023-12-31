@@ -6606,7 +6606,7 @@ base-uri 'self';
         <argument key="currency">Shopware\Core\System\Currency\CurrencyDefinition</argument>
         <argument key="currency_country_rounding">Shopware\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingDefinition</argument>
         <argument key="currency_translation">Shopware\Core\System\Currency\Aggregate\CurrencyTranslation\CurrencyTranslationDefinition</argument>
-        <argument key="custom_entity">Shopware\Core\System\CustomEntity\CustomEntityDefinition</argument>
+        <argument key="custom_entity">Heptastore\Core\Custom\CustomEntityDefinition</argument>
         <argument key="locale">Shopware\Core\System\Locale\LocaleDefinition</argument>
         <argument key="locale_translation">Shopware\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationDefinition</argument>
         <argument key="snippet_set">Shopware\Core\System\Snippet\Aggregate\SnippetSet\SnippetSetDefinition</argument>
@@ -9059,7 +9059,7 @@ base-uri 'self';
         <argument key="currency">Shopware\Core\System\Currency\SalesChannel\SalesChannelCurrencyDefinition</argument>
         <argument key="currency_country_rounding">Shopware\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingDefinition</argument>
         <argument key="currency_translation">Shopware\Core\System\Currency\Aggregate\CurrencyTranslation\CurrencyTranslationDefinition</argument>
-        <argument key="custom_entity">Shopware\Core\System\CustomEntity\CustomEntityDefinition</argument>
+        <argument key="custom_entity">Heptastore\Core\Custom\CustomEntityDefinition</argument>
         <argument key="locale">Shopware\Core\System\Locale\LocaleDefinition</argument>
         <argument key="locale_translation">Shopware\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationDefinition</argument>
         <argument key="snippet_set">Shopware\Core\System\Snippet\Aggregate\SnippetSet\SnippetSetDefinition</argument>
@@ -15819,13 +15819,43 @@ base-uri 'self';
     <service id="Shopware\Storefront\Theme\DataAbstractionLayer\ThemeExceptionHandler" class="Shopware\Storefront\Theme\DataAbstractionLayer\ThemeExceptionHandler">
       <tag name="shopware.dal.exception_handler"/>
     </service>
-    <service id="Heptastore\Storefront\Controller\HeptaStorefrontController" class="Heptastore\Storefront\Controller\HeptaStorefrontController" public="true">
+    <service id="Heptastore\Core\Custom\CustomEntityDefinition" class="Heptastore\Core\Custom\CustomEntityDefinition" public="true">
+      <tag name="shopware.entity.definition" entity="custom_entity"/>
+      <call method="compile">
+        <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
+      </call>
+    </service>
+    <service id="Heptastore\Storefront\Controller\TestController" class="Heptastore\Storefront\Controller\TestController" public="true">
+      <argument type="service" id="custom_entity.repository"/>
       <call method="setContainer">
         <argument type="service" id="service_container"/>
       </call>
       <call method="setTwig">
         <argument type="service" id="twig"/>
       </call>
+    </service>
+    <service id="Heptastore\CustomFieldClass" class="Heptastore\CustomFieldClass">
+      <argument type="service" id="custom_entity.repository"/>
+    </service>
+    <service id="Heptastore\Service\CustomServices" class="Heptastore\Service\CustomServices">
+      <argument type="service" id="Heptstore\Core\Event\ExampleEvent"/>
+    </service>
+    <service id="Heptastore\Service\WriteData" class="Heptastore\Service\WriteData" public="true">
+      <argument type="service" id="custom_entity.repository"/>
+    </service>
+    <service id="Heptastore\Subscriber\MySubscriber" class="Heptastore\Subscriber\MySubscriber">
+      <tag name="kernel.event_subscriber"/>
+    </service>
+    <service id="Heptastore\Storefront\Page\Example\ExamplePageLoader" class="Heptastore\Storefront\Page\Example\ExamplePageLoader" public="true">
+      <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+    </service>
+    <service id="Shopware\Core\Framework\Migration\MigrationSource_Heptastore" class="Shopware\Core\Framework\Migration\MigrationSource">
+      <tag name="shopware.migration_source"/>
+      <argument>Heptastore</argument>
+      <argument type="collection">
+        <argument key="/home/avinash/Desktop/work/Shopware/custom/plugins/Heptastore//src/Migration">Heptastore\Migration</argument>
+      </argument>
     </service>
     <service id="heptastore.filesystem.private" class="Shopware\Core\Framework\Adapter\Filesystem\PrefixFilesystem" public="true">
       <argument type="service" id="shopware.filesystem.private"/>
@@ -20982,6 +21012,14 @@ base-uri 'self';
         <argument type="collection">
           <argument type="service_closure" id="Shopware\Storefront\Theme\Subscriber\UnusedMediaSubscriber"/>
           <argument>removeUsedMedia</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
+      <call method="addListener">
+        <argument>product.aggregation.result.loaded</argument>
+        <argument type="collection">
+          <argument type="service_closure" id="Heptastore\Subscriber\MySubscriber"/>
+          <argument>onProductLoaded</argument>
         </argument>
         <argument>0</argument>
       </call>
@@ -26226,7 +26264,7 @@ base-uri 'self';
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
     </service>
-    <service id="sales_channel_definition.Shopware\Core\System\CustomEntity\CustomEntityDefinition" class="Shopware\Core\System\CustomEntity\CustomEntityDefinition" public="true">
+    <service id="sales_channel_definition.Heptastore\Core\Custom\CustomEntityDefinition" class="Heptastore\Core\Custom\CustomEntityDefinition" public="true">
       <call method="compile">
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>

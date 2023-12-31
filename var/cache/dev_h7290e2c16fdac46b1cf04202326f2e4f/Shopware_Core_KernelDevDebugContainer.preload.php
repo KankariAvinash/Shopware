@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\Container3Ae2SBJ\Shopware_Core_KernelDevDebugContainer::class, null);
+(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\Container1WRYasx\Shopware_Core_KernelDevDebugContainer::class, null);
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';

@@ -1,0 +1,3 @@
+<?php //Shopware%255CCore%255CFramework%255CDataAbstractionLayer%255CIndexing%255CEntityIndexingMessage%2523allow
+
+return [PHP_INT_MAX, []];

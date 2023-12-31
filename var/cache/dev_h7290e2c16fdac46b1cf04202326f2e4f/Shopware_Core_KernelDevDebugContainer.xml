@@ -107,6 +107,20 @@
         <parameter key="composerName">test-plugin/test-plugin</parameter>
       </parameter>
       <parameter type="collection">
+        <parameter key="name">Heptastore</parameter>
+        <parameter key="baseClass">Heptastore\Heptastore</parameter>
+        <parameter key="active">false</parameter>
+        <parameter key="path">custom/plugins/Heptastore/</parameter>
+        <parameter key="version">1.0.0</parameter>
+        <parameter key="autoload" type="collection">
+          <parameter key="psr-4" type="collection">
+            <parameter key="Heptastore\">src/</parameter>
+          </parameter>
+        </parameter>
+        <parameter key="managedByComposer">false</parameter>
+        <parameter key="composerName">heptastore/heptastore</parameter>
+      </parameter>
+      <parameter type="collection">
         <parameter key="name">SwagPayPal</parameter>
         <parameter key="baseClass">Swag\PayPal\SwagPayPal</parameter>
         <parameter key="active">false</parameter>

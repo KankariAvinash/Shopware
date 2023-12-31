@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).'/vendor/autoload.php';
-(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\Container3rtyvxO\Shopware_Core_KernelDevDebugContainer::class, null);
+(require __DIR__.'/Shopware_Core_KernelDevDebugContainer.php')->set(\ContainerExzcuJ1\Shopware_Core_KernelDevDebugContainer::class, null);
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -56,7 +56,11 @@ $classes[] = 'Symfony\Component\Messenger\Handler\HandlerDescriptor';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
 $classes[] = 'Doctrine\DBAL\Connection';
 $classes[] = 'Shopware\Core\Kernel';
-$classes[] = 'Heptastore\Storefront\Controller\HeptaStorefrontController';
+$classes[] = 'Heptastore\Core\Custom\CustomEntityDefinition';
+$classes[] = 'Heptastore\Service\WriteData';
+$classes[] = 'Heptastore\Storefront\Controller\TestController';
+$classes[] = 'Heptastore\Storefront\Page\Example\ExamplePageLoader';
+$classes[] = 'Heptastore\Subscriber\MySubscriber';
 $classes[] = 'Nyholm\Psr7\Factory\Psr17Factory';
 $classes[] = 'Shopware\Elasticsearch\Profiler\ClientProfiler';
 $classes[] = 'Shopware\Administration\Controller\AdminExtensionApiController';
@@ -1950,3 +1954,9 @@ $classes[] = 'Symfony\Component\VarDumper\Dumper\ContextProvider\RequestContextP
 $classes[] = 'Symfony\Component\VarDumper\Dumper\ContextProvider\CliContextProvider';
 
 $preloaded = Preloader::preload($classes);
+
+$classes = [];
+$classes[] = 'Symfony\\Component\\Routing\\Generator\\CompiledUrlGenerator';
+$classes[] = 'Symfony\\Bundle\\FrameworkBundle\\Routing\\RedirectableCompiledUrlMatcher';
+$classes[] = 'Shopware\\Core\\Framework\\Routing\\Annotation\\Since';
+$preloaded = Preloader::preload($classes, $preloaded);
