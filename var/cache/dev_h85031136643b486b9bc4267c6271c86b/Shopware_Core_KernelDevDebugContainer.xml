@@ -6606,7 +6606,7 @@ base-uri 'self';
         <argument key="currency">Shopware\Core\System\Currency\CurrencyDefinition</argument>
         <argument key="currency_country_rounding">Shopware\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingDefinition</argument>
         <argument key="currency_translation">Shopware\Core\System\Currency\Aggregate\CurrencyTranslation\CurrencyTranslationDefinition</argument>
-        <argument key="custom_entity">Heptastore\Core\Custom\CustomEntityDefinition</argument>
+        <argument key="custom_entity">Shopware\Core\System\CustomEntity\CustomEntityDefinition</argument>
         <argument key="locale">Shopware\Core\System\Locale\LocaleDefinition</argument>
         <argument key="locale_translation">Shopware\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationDefinition</argument>
         <argument key="snippet_set">Shopware\Core\System\Snippet\Aggregate\SnippetSet\SnippetSetDefinition</argument>
@@ -6772,6 +6772,7 @@ base-uri 'self';
         <argument key="theme_sales_channel">Shopware\Storefront\Theme\Aggregate\ThemeSalesChannelDefinition</argument>
         <argument key="theme_media">Shopware\Storefront\Theme\Aggregate\ThemeMediaDefinition</argument>
         <argument key="theme_child">Shopware\Storefront\Theme\Aggregate\ThemeChildDefinition</argument>
+        <argument key="hepta_custom_entity">Heptastore\Core\Custom\CustomEntityDefinition</argument>
       </argument>
       <argument type="collection">
         <argument key="log_entry">log_entry.repository</argument>
@@ -6991,6 +6992,7 @@ base-uri 'self';
         <argument key="theme_sales_channel">theme_sales_channel.repository</argument>
         <argument key="theme_media">theme_media.repository</argument>
         <argument key="theme_child">theme_child.repository</argument>
+        <argument key="hepta_custom_entity">hepta_custom_entity.repository</argument>
       </argument>
     </service>
     <service id="Shopware\Core\Framework\DataAbstractionLayer\Write\Validation\LockValidator" class="Shopware\Core\Framework\DataAbstractionLayer\Write\Validation\LockValidator">
@@ -9059,7 +9061,7 @@ base-uri 'self';
         <argument key="currency">Shopware\Core\System\Currency\SalesChannel\SalesChannelCurrencyDefinition</argument>
         <argument key="currency_country_rounding">Shopware\Core\System\Currency\Aggregate\CurrencyCountryRounding\CurrencyCountryRoundingDefinition</argument>
         <argument key="currency_translation">Shopware\Core\System\Currency\Aggregate\CurrencyTranslation\CurrencyTranslationDefinition</argument>
-        <argument key="custom_entity">Heptastore\Core\Custom\CustomEntityDefinition</argument>
+        <argument key="custom_entity">Shopware\Core\System\CustomEntity\CustomEntityDefinition</argument>
         <argument key="locale">Shopware\Core\System\Locale\LocaleDefinition</argument>
         <argument key="locale_translation">Shopware\Core\System\Locale\Aggregate\LocaleTranslation\LocaleTranslationDefinition</argument>
         <argument key="snippet_set">Shopware\Core\System\Snippet\Aggregate\SnippetSet\SnippetSetDefinition</argument>
@@ -9225,6 +9227,7 @@ base-uri 'self';
         <argument key="theme_sales_channel">Shopware\Storefront\Theme\Aggregate\ThemeSalesChannelDefinition</argument>
         <argument key="theme_media">Shopware\Storefront\Theme\Aggregate\ThemeMediaDefinition</argument>
         <argument key="theme_child">Shopware\Storefront\Theme\Aggregate\ThemeChildDefinition</argument>
+        <argument key="hepta_custom_entity">Heptastore\Core\Custom\CustomEntityDefinition</argument>
       </argument>
       <argument type="collection">
         <argument key="language">sales_channel.language.repository</argument>
@@ -15820,13 +15823,13 @@ base-uri 'self';
       <tag name="shopware.dal.exception_handler"/>
     </service>
     <service id="Heptastore\Core\Custom\CustomEntityDefinition" class="Heptastore\Core\Custom\CustomEntityDefinition" public="true">
-      <tag name="shopware.entity.definition" entity="custom_entity"/>
+      <tag name="shopware.entity.definition" entity="hepta_custom_entity"/>
       <call method="compile">
         <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\DefinitionInstanceRegistry"/>
       </call>
     </service>
     <service id="Heptastore\Storefront\Controller\TestController" class="Heptastore\Storefront\Controller\TestController" public="true">
-      <argument type="service" id="custom_entity.repository"/>
+      <argument type="service" id="hepta_custom_entity.repository"/>
       <call method="setContainer">
         <argument type="service" id="service_container"/>
       </call>
@@ -15834,21 +15837,11 @@ base-uri 'self';
         <argument type="service" id="twig"/>
       </call>
     </service>
-    <service id="Heptastore\CustomFieldClass" class="Heptastore\CustomFieldClass">
-      <argument type="service" id="custom_entity.repository"/>
-    </service>
     <service id="Heptastore\Service\CustomServices" class="Heptastore\Service\CustomServices">
       <argument type="service" id="Heptstore\Core\Event\ExampleEvent"/>
     </service>
     <service id="Heptastore\Service\WriteData" class="Heptastore\Service\WriteData" public="true">
-      <argument type="service" id="custom_entity.repository"/>
-    </service>
-    <service id="Heptastore\Subscriber\MySubscriber" class="Heptastore\Subscriber\MySubscriber">
-      <tag name="kernel.event_subscriber"/>
-    </service>
-    <service id="Heptastore\Storefront\Page\Example\ExamplePageLoader" class="Heptastore\Storefront\Page\Example\ExamplePageLoader" public="true">
-      <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader"/>
-      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="hepta_custom_entity.repository"/>
     </service>
     <service id="Shopware\Core\Framework\Migration\MigrationSource_Heptastore" class="Shopware\Core\Framework\Migration\MigrationSource">
       <tag name="shopware.migration_source"/>
@@ -21016,14 +21009,6 @@ base-uri 'self';
         <argument>0</argument>
       </call>
       <call method="addListener">
-        <argument>product.aggregation.result.loaded</argument>
-        <argument type="collection">
-          <argument type="service_closure" id="Heptastore\Subscriber\MySubscriber"/>
-          <argument>onProductLoaded</argument>
-        </argument>
-        <argument>0</argument>
-      </call>
-      <call method="addListener">
         <argument>kernel.controller_arguments</argument>
         <argument type="collection">
           <argument type="service_closure" id="argument_resolver.request_payload"/>
@@ -25701,6 +25686,15 @@ base-uri 'self';
       <argument type="service" id="debug.event_dispatcher"/>
       <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEventFactory"/>
     </service>
+    <service id="hepta_custom_entity.repository" class="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository" public="true">
+      <argument type="service" id="Heptastore\Core\Custom\CustomEntityDefinition"/>
+      <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Read\EntityReaderInterface"/>
+      <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\VersionManager"/>
+      <argument type="service" id="Shopware\Elasticsearch\Framework\DataAbstractionLayer\ElasticsearchEntitySearcher"/>
+      <argument type="service" id="Shopware\Elasticsearch\Framework\DataAbstractionLayer\ElasticsearchEntityAggregator"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="Shopware\Core\Framework\DataAbstractionLayer\Event\EntityLoadedEventFactory"/>
+    </service>
     <service id="shopware.rate_limiter" class="Shopware\Core\Framework\RateLimiter\RateLimiter">
       <call method="registerLimiterFactory">
         <argument>login</argument>
@@ -26264,7 +26258,7 @@ base-uri 'self';
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
     </service>
-    <service id="sales_channel_definition.Heptastore\Core\Custom\CustomEntityDefinition" class="Heptastore\Core\Custom\CustomEntityDefinition" public="true">
+    <service id="sales_channel_definition.Shopware\Core\System\CustomEntity\CustomEntityDefinition" class="Shopware\Core\System\CustomEntity\CustomEntityDefinition" public="true">
       <call method="compile">
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
@@ -27055,6 +27049,11 @@ base-uri 'self';
       </call>
     </service>
     <service id="sales_channel_definition.Shopware\Storefront\Theme\Aggregate\ThemeChildDefinition" class="Shopware\Storefront\Theme\Aggregate\ThemeChildDefinition" public="true">
+      <call method="compile">
+        <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
+      </call>
+    </service>
+    <service id="sales_channel_definition.Heptastore\Core\Custom\CustomEntityDefinition" class="Heptastore\Core\Custom\CustomEntityDefinition" public="true">
       <call method="compile">
         <argument type="service" id="Shopware\Core\System\SalesChannel\Entity\SalesChannelDefinitionInstanceRegistry"/>
       </call>
@@ -29303,6 +29302,7 @@ base-uri 'self';
     <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $themeSalesChannelRepository" alias="theme_sales_channel.repository"/>
     <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $themeMediaRepository" alias="theme_media.repository"/>
     <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $themeChildRepository" alias="theme_child.repository"/>
+    <service id="Shopware\Core\Framework\DataAbstractionLayer\EntityRepository $heptaCustomEntityRepository" alias="hepta_custom_entity.repository"/>
     <service id="messenger.default_transport" alias="messenger.transport.v65"/>
     <service id="sales_channel_definition.Shopware\Core\System\Language\SalesChannel\SalesChannelLanguageDefinition" alias="Shopware\Core\System\Language\SalesChannel\SalesChannelLanguageDefinition" public="true"/>
     <service id="sales_channel_definition.Shopware\Core\System\Language\LanguageDefinition" alias="Shopware\Core\System\Language\SalesChannel\SalesChannelLanguageDefinition" public="true"/>

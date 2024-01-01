@@ -1,3 +1,0 @@
-<?php //Shopware%255CCore%255CContent%255CNewsletter%255CSalesChannel%255CNewsletterSubscribeRoute%2523getDomainUrls
-
-return [PHP_INT_MAX, []];

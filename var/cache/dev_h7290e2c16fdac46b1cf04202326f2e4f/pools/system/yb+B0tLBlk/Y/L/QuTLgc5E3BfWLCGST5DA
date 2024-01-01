@@ -1,3 +1,0 @@
-<?php //%5BC%5DShopware%255CCore%255CContent%255CProductExport%255CScheduledTask%255CProductExportGenerateTask%2523getDefaultInterval
-
-return [PHP_INT_MAX, 1703929466];

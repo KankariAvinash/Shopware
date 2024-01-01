@@ -1,3 +1,0 @@
-<?php //Shopware%255CCore%255CFramework%255CScript%255CApi%255CScriptApiRoute%2523validate
-
-return [PHP_INT_MAX, []];

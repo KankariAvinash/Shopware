@@ -6,11 +6,11 @@
 
     <services>
         <service id="Heptastore\Core\Custom\CustomEntityDefinition">
-            <tag name="shopware.entity.definition" entity="custom_entity" />
+            <tag name="shopware.entity.definition" entity="hepta_custom_entity" />
         </service>
 
         <service id="Heptastore\Storefront\Controller\TestController" public="true">
-            <argument type="service" id="custom_entity.repository"/>
+            <argument type="service" id="hepta_custom_entity.repository"/>
             <call method="setContainer">
                 <argument type="service" id="service_container"/>
             </call>
@@ -18,22 +18,13 @@
                 <argument type="service" id="twig"/>
             </call>
         </service>
-        <service id="Heptastore\CustomFieldClass">
-            <argument type="service" id="custom_entity.repository"/>
-        </service>
+
         <service id="Heptastore\Service\CustomServices">
             <argument type="service" id="Heptstore\Core\Event\ExampleEvent"/>
         </service>
+
         <service id="Heptastore\Service\WriteData" public="true">
-            <argument type="service" id="custom_entity.repository"/>
+            <argument type="service" id="hepta_custom_entity.repository"/>
         </service>
-        <service id="Heptastore\Subscriber\MySubscriber">
-            <tag name="kernel.event_subscriber"/>
-        </service>
-        <service id="Heptastore\Storefront\Page\Example\ExamplePageLoader" public="true">
-            <argument type="service" id="Shopware\Storefront\Page\GenericPageLoader" />
-            <argument type="service" id="event_dispatcher"/>
-        </service>
-        
     </services>
 </container>

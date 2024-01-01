@@ -1,3 +1,0 @@
-<?php //Shopware%255CCore%255CFramework%255CIncrement%255CController%255CIncrementApiController%2523getCluster
-
-return [PHP_INT_MAX, []];

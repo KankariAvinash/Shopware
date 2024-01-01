@@ -1,3 +1,0 @@
-<?php //Shopware%255CCore%255CFramework%255CDataAbstractionLayer%255CPricing%255CCashRoundingConfig%2523setRoundForNet
-
-return [PHP_INT_MAX, []];

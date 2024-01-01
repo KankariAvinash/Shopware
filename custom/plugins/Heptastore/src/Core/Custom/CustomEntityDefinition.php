@@ -15,7 +15,7 @@ class CustomEntityDefinition extends EntityDefinition
 {
     public function getEntityName(): string
     {
-        return 'custom_entity';
+        return 'hepta_custom_entity';
     }
 
     public function getCollectionClass(): string
@@ -33,7 +33,7 @@ class CustomEntityDefinition extends EntityDefinition
         return new FieldCollection([
             (new IdField('id', 'id'))->addFlags(new PrimaryKey(), new Required()),
             new StringField('technical_name', 'technicalName'),
-            new CustomFields('customFields'),
+            new CustomFields('custom_fields','customFields'),
         ]);
     }
 }

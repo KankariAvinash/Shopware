@@ -22,6 +22,6 @@ class MySubscriber implements EventSubscriberInterface
         );
     }
     public function onProductLoaded(EntityLoadedEvent $event){
-
+        $this->eventDispatcher->dispatch(ExampleEvent::class);
     }
 }
